@@ -1,6 +1,18 @@
 # TotalCross Change Log
 All notable changes to this project will be documented in this file.
 
+## 5.0.1 - 2019-05-07
+
+### Added
+- Added support for printing on Cielo Lio devices with embedded printer. Refer to the class `totalcross.cielo.sdk.printer.PrinterManager` for usage information.
+
+### Fixed
+- Grid: fixed column width sizing - TotalCross#480
+- Button: fixed position of contents based on the gap value - TotalCross#487
+- CalendarBox: fixed calculation of font size - TotalCross#397
+- VirtualKeyboard: fixed Clear button and text input look - TotalCross#397
+- Socket: fixed support for open timeout on iOS - TotalCross#128
+
 ## 5.0.0 - 2019-04-15
 
 ### Highlights
