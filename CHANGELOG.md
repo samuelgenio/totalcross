@@ -1,6 +1,43 @@
 # TotalCross Change Log
 All notable changes to this project will be documented in this file.
 
+## 5.1.0 - 2019-07-04
+
+### Highlights
+- YouTube Player: New API for displaying YouTube videos on Android and iOS
+- Added support for text prediction when using native keyboard on Android and iOS
+
+### Fixed
+- ListContainer: Fixed Check on ListContainer - TotalCross#393
+- InputBox: Removed dummy mask that caused trouble when using setMode - TotalCross#506 
+- Toast: Fixed using '\n' on the String used on Toast.show - TotalCross#498
+- Button: Fixed using an image and no text position - TotalCross#527
+- Edit: Fixed base line not showing when running on devices with DP smaller than 1, such as most WinCE devices - TotalCross#389
+- PopupMenu: Fixed the Android UI style - TotalCross#369
+
+### Changed
+- TabbedContainer: Improved graphical performance and responsiveness
+
+### Added
+- MultiEdit: Added fields to set the text gap - TotalCross#489
+- Button: Added constant CENTRALIZE to centralize image and text buttons - TotalCross#498
+- Settings: Added field `allowBackup`, which may be used to disable Android's automate cloud backup - TotalCross#548
+
+## 4.3.8 - 2019-05-31
+
+### Highlights
+- Added support for Android 64 bits - TotalCross#515
+
+### Fixed
+- Fixed bug with large CRC or size values overflowing 32 bit integer - TotalCross#529
+
+### Changed
+- tccodesign script
+  - Added --output parameter
+  - Removed lined that deletes UIStoryLaunch
+  - Fixed icon problem
+  - Changed to use a temporary folder during the process
+
 ## 5.0.1 - 2019-05-07
 
 ### Added
