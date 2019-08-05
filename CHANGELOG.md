@@ -1,6 +1,26 @@
 # TotalCross Change Log
 All notable changes to this project will be documented in this file.
 
+## 5.1.2 - 2019-08-05
+
+### Highlights
+- Added support for generating QR codes natively on the device - TotalCross#540
+
+> :information_source: **This feature is available on all supported devices, but not on the simulator yet. Refer to the documentation for more information and sample usage**
+
+### Fixed
+- Camera: Fixed `CAMERA_NATIVE_NOCOPY` - TotalCross#554
+- Fixed support to listening events on Android hardware buttons, broken on version 5.1.0 - TotalCross#557, TotalCross#559, TotalCross#560
+- ComboBox: Fixed support for option usePopMenu
+
+## 4.3.9 - 2019-08-05
+
+### Fixed
+- tccodesign script: fixed support for push notification
+
+### Added
+- Added classes `AsyncTask` and `ThreadPool` to improve concurrency support, refer to the documentation and the PlayBook for more information and samples
+
 ## 5.1.1 - 2019-07-16
 
 ### Fixed
