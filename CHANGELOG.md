@@ -1,6 +1,11 @@
 # TotalCross Change Log
 All notable changes to this project will be documented in this file.
 
+## 5.1.1 - 2019-07-16
+
+### Fixed
+- Fixed push and local notifications for Android 8+ - TotalCross#316
+
 ## 5.1.0 - 2019-07-04
 
 ### Highlights
