@@ -1,4 +1,4 @@
-#TotalCross - A Free and Open GUI Creator for embedded system and mobile applications
+# TotalCross - A Free and Open GUI Creator for embedded system and mobile applications
 
 TotalCross is an open source and free GUI Creator for embedded systems and a framework for developing cross-platform applications for android, iOS, wince, windows and desktop, Linux desktop and Linux arm using Kotlin or Java or any Java Based language.
 
