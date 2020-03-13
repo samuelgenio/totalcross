@@ -1,4 +1,4 @@
-#TotalCross - A Free and Open GUI Creator for embedded system and mobile applications
+# TotalCross - A Free and Open GUI Creator for embedded system and mobile applications
 
 TotalCross is an open source and free GUI Creator for embedded systems and a framework for developing cross-platform applications for android, iOS, wince, windows and desktop, Linux desktop and Linux arm using Kotlin or Java or any Java Based language.
 
@@ -23,7 +23,7 @@ O TotalCross SDK is comprised by two main components:
 * TCVM. - The heart of totalcross sdk is present our virtual machine, originally idealized in a master's thesis, and already built and improved over 10 years. It's log-based (Java) architecture, bytecode "itself with its own folders" for the most frequent and implemented **almost 100% with C guarantees performance equivalent to native development**. To read more about the TCVM click here.
 
 
-## How to be a contributor?
+## Developing for TotalCross
 
 In order to create a better tool and develop GUI for embedded systems and develop cross platform applications, it helps us in the community, so we have separated some challenges for those who want to contribute:
 
@@ -34,13 +34,15 @@ In order to create a better tool and develop GUI for embedded systems and develo
     * Adding API port for Python.
 * Improving a TC VM 
     * Create support for external and native libraries.
-* Interacting in the issues repository;
+* Interacting in the [issues repository](https://gitlab.com/totalcross/TotalCross/-/issues);
     * Report and fixes new bugs;
     * Responding issues report;
     * Suggest and vote on new features.
 * Make documentation easier and more complete:
-    * Improving the getting started;
+    * Improving the [getting started](https://learn.totalcross.com/get-started/requirements);
     * Point out points of documentation improvements.
+
+See how to [be a contributor](https://gitlab.com/totalcross/TotalCross/-/blob/master/CONTRIBUTING.md)!
 
 ## RoadMap
 Until 2020.2 the TotalCross team are working to launch:
