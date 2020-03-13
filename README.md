@@ -42,7 +42,7 @@ In order to create a better tool and develop GUI for embedded systems and develo
     * Improving the [getting started](https://learn.totalcross.com/get-started/requirements);
     * Point out points of documentation improvements.
 
-See how to [be a contributor](https://gitlab.com/totalcross/TotalCross/-/blob/master/CONTRIBUTING.md)!
+See how to [be a contributor](CONTRIBUTING.md)!
 
 ## RoadMap
 Until 2020.2 the TotalCross team are working to launch:

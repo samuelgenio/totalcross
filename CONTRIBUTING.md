@@ -9,3 +9,9 @@ We invite you to join our team! Everyone is welcome to contribute code via pull 
 ## Contributor access
 
 See the [term to become a contributor](). 
+
+## How to contribute
+
+Understand how a contributor's work should be:
+ 
+- *[Branch workflow](https://learn.totalcross.com/contribution/branch-workflow)*: we follow the pattern *rebase before merge*, helps us to anticipate integration and to maintain a more linear commit history;
