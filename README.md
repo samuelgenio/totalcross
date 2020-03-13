@@ -1,18 +1,18 @@
-#TotalCross - A Free and Open GUI Creator for embedded system and mobile applications
+# TotalCross - A Free and Open GUI Creator for embedded system and mobile applications
 
 TotalCross is an open source and free GUI Creator for embedded systems and a framework for developing cross-platform applications for android, iOS, wince, windows and desktop, Linux desktop and Linux arm using Kotlin or Java or any Java Based language.
 
 ### Where you can find us
 * [Docs](learn.totalcross.com);
 * [Issues](gitlab.com/totalcross/totalcross/issues);
-* [Telegram](https://t.me/comunidadetotalcross);
+* [Telegram](https://t.me/totalcrosscommunity);
 * [Medium](https://medium.com/totalcross-community/about);
 * [Youtube](https://www.youtube.com/channel/UCSXUBRBC4Ec3_o9R7-3XX-w);
 * [Twitter](https://twitter.com/TotalCross);
 * [Instagram](https://www.instagram.com/totalcross/).
 
 ## How TotalCross works?
-![Usage flow](https://blog.totalcross.com/wp-content/uploads/sites/7/2020/03/fluxo.jpg)
+![Usage flow](https://i.imgur.com/awacOIe.png)
 
 The developer can use Kotlin or Java to create applications using TotalCross Java API which provides rich GUI components.  The application source code is then compiled resulting in the ByteCode Java, which is converted to our TotalCross Optimized Bytecode, packaged and distributed for the platforms the user specified which can be window and Linux desktop, iOS, Android and Linux arm.
 
