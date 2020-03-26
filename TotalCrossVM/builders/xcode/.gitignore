@@ -1,0 +1,10 @@
+/Pods/
+/Podfile.lock
+/*.framework/
+/build/
+.DS_Store
+*.swp
+*~.nib
+*.pbxuser
+*.perspective
+*.perspectivev3
