@@ -82,10 +82,10 @@ TC_API void tidPC_create_siiii(NMParams p) // totalcross/io/device/PortConnector
 #if !defined WP8
    TCObject portConnector = p->obj[0];
    TCObject port = p->obj[1];
-   int32 baudRate = p->i32[1];
-   int32 bits = p->i32[2];
-   int32 parity = p->i32[3];
-   int32 stopBits = p->i32[4];
+   int32 baudRate = p->i32[0];
+   int32 bits = p->i32[1];
+   int32 parity = p->i32[2];
+   int32 stopBits = p->i32[3];
    TCHAR portName[1024];
 
    TCObject portConnectorRef;
