@@ -79,7 +79,7 @@ TC_API void tidPC_create_iiiii(NMParams p) // totalcross/io/device/PortConnector
 //////////////////////////////////////////////////////////////////////////
 TC_API void tidPC_create_siiii(NMParams p) // totalcross/io/device/PortConnector native void create(String port, int baudRate, int bits, int parity, int stopBits);
 {
-#if !defined WP8
+#if defined linux
    TCObject portConnector = p->obj[0];
    TCObject port = p->obj[1];
    int32 baudRate = p->i32[0];

@@ -125,18 +125,16 @@ static Err portConnectorCreate(PortHandle* portConnectorRef, VoidP receiveBuffer
    return NO_ERROR;
 }
 
-static Err portConnectorCreate(PortHandle* portConnectorRef, VoidP receiveBuffer, TCHAR port, int32 baudRate, int32 bits, int32 parity, int32 stopBits, int32 writeTimeOutValue)
+static Err portConnectorCreate(PortHandle* portConnectorRef, VoidP receiveBuffer, TCHARP port, int32 baudRate, int32 bits, int32 parity, int32 stopBits, int32 writeTimeOutValue)
 {
-   char dev[16];
    struct termios options;
    int fd;
 
-   sprintf(dev, port);
 
-   fd = open(dev, O_RDWR | O_NOCTTY | O_EXCL/* | O_NDELAY*/);
+   fd = open(port, O_RDWR | O_NOCTTY | O_EXCL/* | O_NDELAY*/);
    if (fd < 0)
    {
-      perror(dev);
+      perror(port);
 	  return EBADF;
    }
 
