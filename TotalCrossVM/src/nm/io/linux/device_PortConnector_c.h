@@ -125,6 +125,95 @@ static Err portConnectorCreate(PortHandle* portConnectorRef, VoidP receiveBuffer
    return NO_ERROR;
 }
 
+static Err portConnectorCreate(PortHandle* portConnectorRef, VoidP receiveBuffer, TCHAR port, int32 baudRate, int32 bits, int32 parity, int32 stopBits, int32 writeTimeOutValue)
+{
+   char dev[16];
+   struct termios options;
+   int fd;
+
+   sprintf(dev, port);
+
+   fd = open(dev, O_RDWR | O_NOCTTY | O_EXCL/* | O_NDELAY*/);
+   if (fd < 0)
+   {
+      perror(dev);
+	  return EBADF;
+   }
+
+   // Get the current options for the port...
+   if (tcgetattr(fd, &options) < 0)
+      return errno;
+
+#define CASE(x)   case x: baudRate = B##x; break;
+   switch (baudRate)
+   {
+      CASE(50)    CASE(75)    CASE(110)   CASE(134)   CASE(150)   CASE(200)
+      CASE(300)   CASE(600)   CASE(1200)  CASE(1800)  CASE(2400)  CASE(4800)
+      CASE(9600)  CASE(19200) CASE(38400) CASE(57600) CASE(115200)
+      default: baudRate = B0; /* hang up */
+   }
+   // Set the in/out baud rates
+   if (cfsetspeed(&options, baudRate) < 0)
+      return errno;
+
+   options.c_lflag &= ~ICANON;
+   options.c_cc[VMIN] = 0;
+   options.c_cc[VTIME] = writeTimeOutValue;
+
+   /* Set character size.  csize variable is an integer holding the desired character size. */
+   options.c_cflag &= ~(CSIZE);  /* clear bits used for char size */
+   switch (bits)
+   {
+      case 8:
+         options.c_cflag |= CS8;
+         break;
+      case 7:
+         options.c_cflag |= CS7;
+         break;
+      case 6:
+         options.c_cflag |= CS6;
+         break;
+      case 5:
+         options.c_cflag |= CS5;
+         break;
+      default:
+         fprintf(stderr, "wrong number of bits: %d\n", bits);
+         return EINVAL;
+   }
+
+   /* set parity -- parity variable can be an enum type */
+   switch (parity)
+   {
+      case SERIAL_PARITY_NONE:
+         options.c_cflag &= ~(PARENB);  /* clear parity enable */
+         options.c_iflag &= ~(INPCK);   /* disable input parity checking */
+         break;
+      case SERIAL_PARITY_ODD:
+         options.c_cflag |= (PARODD | PARENB);  /* enable parity, set to ODD */
+         options.c_iflag |= INPCK;              /* enable input parity checking */
+         break;
+      case SERIAL_PARITY_EVEN:
+         options.c_cflag |= PARENB;     /* enable parity, default is EVEN */
+         options.c_cflag &= ~(PARODD);  /* ensure PARODD is clear */
+         options.c_iflag |= INPCK;      /* enable input parity checking */
+         break;
+   }
+
+   if (stopBits == 2)
+      options.c_cflag |= CSTOPB;
+   else
+      options.c_cflag &= ~CSTOPB; // default is 1 stop bit
+
+   // Set the new options for the port...
+   if (tcsetattr(fd, TCSADRAIN, &options) < 0)
+      return errno;
+
+   if (portConnectorRef)
+      *portConnectorRef = fd;
+
+   return NO_ERROR;
+}
+
 static inline Err portConnectorClose(PortHandle portConnectorRef, VoidP receiveBuffer, int32 portNumber)
 {
 #ifndef ANDROID

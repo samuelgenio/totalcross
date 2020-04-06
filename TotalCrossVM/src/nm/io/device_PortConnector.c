@@ -77,6 +77,44 @@ TC_API void tidPC_create_iiiii(NMParams p) // totalcross/io/device/PortConnector
 #endif
 }
 //////////////////////////////////////////////////////////////////////////
+TC_API void tidPC_create_siiii(NMParams p) // totalcross/io/device/PortConnector native void create(String port, int baudRate, int bits, int parity, int stopBits);
+{
+#if !defined WP8
+   TCObject portConnector = p->obj[0];
+   TCObject port = p->obj[1];
+   int32 baudRate = p->i32[1];
+   int32 bits = p->i32[2];
+   int32 parity = p->i32[3];
+   int32 stopBits = p->i32[4];
+   TCHAR portName[1024];
+
+   TCObject portConnectorRef;
+   PortHandle* portConnectorHandle;
+   TCObject receiveBufferObj;
+   VoidP* receiveBuffer;
+   Err err;
+
+   int32 timeout = 200;
+
+   portConnectorRef = createByteArray(p->currentContext, sizeof(PortHandle));
+   receiveBufferObj = createByteArray(p->currentContext, sizeof(VoidP));
+   if (portConnectorRef != null && receiveBufferObj != null)
+   {
+      PortConnector_portConnector(portConnector) = portConnectorRef;
+      PortConnector_receiveBuffer(portConnector) = receiveBufferObj;
+      portConnectorHandle = (PortHandle*) ARRAYOBJ_START(portConnectorRef);
+      String2TCHARPBuf(port, portName);
+      receiveBuffer = (VoidP*) ARRAYOBJ_START(receiveBufferObj);
+      if ((err = portConnectorCreate(portConnectorHandle, *receiveBuffer, portName, baudRate, bits, parity, stopBits, timeout)) != NO_ERROR)
+      {
+         throwExceptionWithCode(p->currentContext, IOException, err);
+         invalidate(portConnector);
+      }
+   }
+   else invalidate(portConnector);
+#endif
+}
+//////////////////////////////////////////////////////////////////////////
 TC_API void tidPC_nativeClose(NMParams p) // totalcross/io/device/PortConnector native private void nativeClose();
 {
 #if !defined WP8

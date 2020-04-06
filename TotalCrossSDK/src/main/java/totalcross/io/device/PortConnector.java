@@ -57,6 +57,7 @@ public class PortConnector extends Stream {
   private Object portConnectorRef;
   Object _receiveBuffer; // Used only on PALMOS
   int _portNumber;
+  String _port;
 
   /** Defines the write timeout, in milliseconds. The default is 6 seconds. */
   public int writeTimeout = 6000; // guich@570_67
@@ -171,6 +172,52 @@ public class PortConnector extends Stream {
   }
 
   /**
+   * Opens a port. The number passed is the number of the
+   * port for devices with multiple ports. Port number
+   * 0 defines the "default port" of a given type. For Windows CE
+   * and Palm OS devices, you should pass 0 as the port number to
+   * access the device's single serial or usb port.
+   * <p>
+   * On Windows devices, port numbers map to COM port numbers.
+   * For example, serial port 2 maps to "COM2:".
+   * <p>
+   * Here is an example showing how to open the serial port of a
+   * Palm OS device at 9600 baud with settings of 8 bits,
+   * no partity and one stop bit (8/N/1):
+   * <pre>
+   * PortConnector port = new PortConnector(0, 9600, 8, false, 1);
+   * </pre>
+   * Here is an example of opening serial port COM2: on a Windows device:
+   * <pre>
+   * PortConnector port = new PortConnector(2, 57600, 8, false, 1);
+   * </pre>
+   * No serial XON/XOFF flow control (commonly called software flow control)
+   * is used and RTS/CTS flow control (commonly called hardware flow control)
+   * is turn on by default on all platforms but Windows CE. The parity setting
+   * must be one of the constants PARITY_NONE, PARITY_EVEN, PARITY_ODD. For Palm OS,
+   * PARITY_ODD turns on XON/XOFF mode.
+   *
+   * @param number port number. In Windows, this is the number of the COM port. On Windows and Palm OS, you can pass
+   * a 4-letter that indicates the connection that will be used. For example, on Palm OS you could use <code>Convert.chars2int("rfcm")</code>
+   * or in Windows CE use <code>Convert.chars2int("COM4")</code>.
+   * @param baudRate baud rate
+   * @param bits bits per char [5 to 8]
+   * @param parity of the constants PARITY_NONE, PARITY_EVEN, PARITY_ODD. For Palm OS, PARITY_ODD turns on XonXoff mode.
+   * @param stopBits number of stop bits
+   * @see #setFlowControl
+   * @since SuperWaba 4.5
+   */
+  public PortConnector(String port, int baudRate, int bits, int parity, int stopBits)
+      throws totalcross.io.IllegalArgumentIOException, totalcross.io.IOException {
+    if (bits < 5 || bits > 8) {
+      throw new totalcross.io.IllegalArgumentIOException("bits", Convert.toString(bits));
+    }
+
+    _port = port;
+    create(port, baudRate, bits, parity, stopBits);
+  }
+
+  /**
    * Open a port with settings of 8 bits, no parity and 1 stop bit.
    * These are the most commonly used port settings.
    * @param number port number. On Windows, this is the number of the COM port.
@@ -230,6 +277,10 @@ public class PortConnector extends Stream {
     } catch (Throwable t) {
       throw new totalcross.io.IOException(t.getClass().getName() + " - " + t.getMessage());
     }
+  }
+
+  private void create(String port, int baudRate, int bits, int parity, int stopBits) throws totalcross.io.IOException {
+    //Does nothing on Java.
   }
 
   /**

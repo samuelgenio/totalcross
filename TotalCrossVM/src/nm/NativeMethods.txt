@@ -351,6 +351,7 @@ totalcross/io/device/RadioDevice|native public static boolean isSupported(int ty
 totalcross/io/device/RadioDevice|native public static int getState(int type) throws IllegalArgumentException;
 totalcross/io/device/RadioDevice|native public static void setState(int type, int state) throws IllegalArgumentException;
 totalcross/io/device/PortConnector|native void create(int number, int baudRate, int bits, int parity, int stopBits);
+totalcross/io/device/PortConnector|native void create(String port, int baudRate, int bits, int parity, int stopBits);
 totalcross/io/device/PortConnector|native private void nativeClose();
 totalcross/io/device/PortConnector|native public boolean setFlowControl(boolean on);
 totalcross/io/device/PortConnector|native public int readCheck();

@@ -359,6 +359,7 @@ void fillNativeProcAddressesTC()
    htPutPtr(&htNativeProcAddresses, hashCode("tidRD_getState_i"), &tidRD_getState_i);
    htPutPtr(&htNativeProcAddresses, hashCode("tidRD_setState_ii"), &tidRD_setState_ii);
    htPutPtr(&htNativeProcAddresses, hashCode("tidPC_create_iiiii"), &tidPC_create_iiiii);
+   htPutPtr(&htNativeProcAddresses, hashCode("tidPC_create_siiii"), &tidPC_create_siiii);
    htPutPtr(&htNativeProcAddresses, hashCode("tidPC_nativeClose"), &tidPC_nativeClose);
    htPutPtr(&htNativeProcAddresses, hashCode("tidPC_setFlowControl_b"), &tidPC_setFlowControl_b);
    htPutPtr(&htNativeProcAddresses, hashCode("tidPC_readCheck"), &tidPC_readCheck);

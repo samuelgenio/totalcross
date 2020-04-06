@@ -25,6 +25,7 @@ public class PortConnector4D extends Stream {
   private Object portConnectorRef;
   Object receiveBuffer; // Used only on PALMOS
   int portNumber;
+  String port;
 
   public int readTimeout = 6000;
   public int writeTimeout = 6000; // guich@570_67
@@ -57,6 +58,16 @@ public class PortConnector4D extends Stream {
 
     portNumber = number;
     create(number, baudRate, bits, parity, stopBits);
+  }
+
+  public PortConnector4D(String port, int baudRate, int bits, int parity, int stopBits)
+      throws totalcross.io.IllegalArgumentIOException, totalcross.io.IOException {
+    if (bits < 5 || bits > 8) {
+      throw new totalcross.io.IllegalArgumentIOException("bits", Convert.toString(bits));
+    }
+
+    this.port = port;
+    create(this.port, baudRate, bits, parity, stopBits);
   }
 
   @Override
@@ -104,6 +115,8 @@ public class PortConnector4D extends Stream {
   }
 
   native void create(int number, int baudRate, int bits, int parity, int stopBits) throws totalcross.io.IOException;
+
+  native void create(String port, int baudRate, int bits, int parity, int stopBits) throws totalcross.io.IOException;
 
   native private void nativeClose() throws totalcross.io.IOException;
 

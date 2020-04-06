@@ -352,6 +352,7 @@ TC_API void tidRD_isSupported_i(NMParams p);
 TC_API void tidRD_getState_i(NMParams p);
 TC_API void tidRD_setState_ii(NMParams p);
 TC_API void tidPC_create_iiiii(NMParams p);
+TC_API void tidPC_create_siiii(NMParams p);
 TC_API void tidPC_nativeClose(NMParams p);
 TC_API void tidPC_setFlowControl_b(NMParams p);
 TC_API void tidPC_readCheck(NMParams p);
