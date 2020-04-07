@@ -125,7 +125,7 @@ static Err portConnectorCreate(PortHandle* portConnectorRef, VoidP receiveBuffer
    return NO_ERROR;
 }
 
-static Err portConnectorCreate(PortHandle* portConnectorRef, VoidP receiveBuffer, TCHARP port, int32 baudRate, int32 bits, int32 parity, int32 stopBits, int32 writeTimeOutValue)
+static Err portConnectorSCreate(PortHandle* portConnectorRef, VoidP receiveBuffer, TCHARP port, int32 baudRate, int32 bits, int32 parity, int32 stopBits, int32 writeTimeOutValue)
 {
    struct termios options;
    int fd;
